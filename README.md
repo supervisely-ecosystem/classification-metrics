@@ -65,10 +65,10 @@ Consider an example: we have an image with GT classes ["dog", "cat"] and predict
 # Related apps
 
 1. [Train MMClassification](https://ecosystem.supervise.ly/apps/supervisely-ecosystem/mmclassification/supervisely/train) app to train classification model on your data 
-<img data-key="sly-module-link" data-module-slug="supervisely-ecosystem/mmclassification/supervisely/train" src="https://i.imgur.com/mXG6njU.png" width="350px" style='padding-bottom: 10px'/>
+<img data-key="sly-module-link" data-module-slug="supervisely-ecosystem/mmclassification/supervisely/train" src="media/trainmm.png" width="350px" style='padding-bottom: 10px'/>
 
 2. [Serve MMClassification](https://ecosystem.supervise.ly/apps/supervisely-ecosystem/mmclassification/supervisely/serve) app to load classification model to be applied to your project
-<img data-key="sly-module-link" data-module-slug="supervisely-ecosystem/mmclassification/supervisely/serve" src="https://i.imgur.com/CU8XHdQ.png" width="350px" style='padding-bottom: 10px'/>
+<img data-key="sly-module-link" data-module-slug="supervisely-ecosystem/mmclassification/supervisely/serve" src="media/servemm.png" width="350px" style='padding-bottom: 10px'/>
 
 3. [Apply Classifier to Images Project](https://ecosystem.supervise.ly/apps/supervisely-ecosystem/apply-classification-model-to-project) app to apply classification model to your project
 <img data-key="sly-module-link" data-module-slug="supervisely-ecosystem/apply-classification-model-to-project" src="https://github.com/supervisely-ecosystem/apply-classification-model-to-project/releases/download/v0.0.1/app-name-descrition.png" width="350px" style='padding-bottom: 10px'/>
