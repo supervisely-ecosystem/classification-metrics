@@ -1,10 +1,3 @@
-import supervisely as sly
-from dotenv import load_dotenv
-import os
-import pathlib
-import requests
-import time
-from itertools import chain
 import numpy as np
 import pandas as pd
 
@@ -125,45 +118,63 @@ def get_confusion_matrix_multilabel_2(
     return confusion_matrix, confusion_matrix_imgs
 
 
-def filter_by_class(img2classes: dict, cls: str, not_in=False):
-    img_names = []
-    for img_name, img_classes in img2classes.items():
-        if not_in is False and cls in img_classes:
-            img_names.append(img_name)
-        if not_in is True and cls not in img_classes:
-            img_names.append(img_name)
-    return img_names
+def get_overall_metrics(report, mlcm):
+    df = pd.DataFrame(report)[["micro avg"]].T
+    mlcm_sum = mlcm.sum(0)
+    df["TP"] = mlcm_sum[1, 1]
+    df["FN"] = mlcm_sum[1, 0]
+    df["FP"] = mlcm_sum[0, 1]
+    df.index = ["total"]
+    df = df.rename(columns={"support": "count"})
+    return df
 
 
-# def bce(y_true, y_pred, eps=1e-7):
-#     y_pred = np.clip(y_pred, eps, 1 - eps)
-#     term_0 = (1 - y_true) * np.log(1 - y_pred + eps)
-#     term_1 = y_true * np.log(y_pred + eps)
-#     return -np.mean(term_0 + term_1, axis=0)
+def get_per_class_metrics(report, mlcm, classes):
+    df = pd.DataFrame(report).iloc[:, : len(classes)].T
+    df["TP"] = mlcm[:, 1, 1]
+    df["FN"] = mlcm[:, 1, 0]
+    df["FP"] = mlcm[:, 0, 1]
+    df["Class"] = classes
+    cols = list(df.columns)
+    cols = [cols[-1]] + cols[:-1]
+    df = df[cols]
+    df = df.rename(columns={"support": "count"})
+    return df
 
 
-def img_metrics(gt_tags, pred_tags, is_multilabel, suffix=None):
-    if is_multilabel:
-        if suffix is not None:
-            pred_tags = [
-                tag.name[: -len(suffix)] if tag.name.endswith(suffix) else tag.name
-                for tag in pred_tags
-            ]
-        else:
-            pred_tags = [tag.name for tag in pred_tags]
+# def filter_by_class(img2classes: dict, cls: str, not_in=False):
+#     img_names = []
+#     for img_name, img_classes in img2classes.items():
+#         if not_in is False and cls in img_classes:
+#             img_names.append(img_name)
+#         if not_in is True and cls not in img_classes:
+#             img_names.append(img_name)
+#     return img_names
 
-        gt_tags = [tag.name for tag in gt_tags]
-        gt_tags = set(gt_tags)
-        pred_tags = set(pred_tags)
-        tp = len(gt_tags & pred_tags)
-        fp = len(pred_tags - gt_tags)
-        fn = len(gt_tags - pred_tags)
-        return [tp, fp, fn]
-    else:  # single-label
-        gt_tags = gt_tags[0].name
-        if suffix is not None and pred_tags[0].name.endswith(suffix):
-            pred_tags = pred_tags[0].name[: -len(suffix)]
-        else:
-            pred_tags = pred_tags[0].name
-        correct = gt_tags == pred_tags
-        return [correct]
+
+
+# def img_metrics(gt_tags, pred_tags, is_multilabel, suffix=None):
+#     if is_multilabel:
+#         if suffix is not None:
+#             pred_tags = [
+#                 tag.name[: -len(suffix)] if tag.name.endswith(suffix) else tag.name
+#                 for tag in pred_tags
+#             ]
+#         else:
+#             pred_tags = [tag.name for tag in pred_tags]
+
+#         gt_tags = [tag.name for tag in gt_tags]
+#         gt_tags = set(gt_tags)
+#         pred_tags = set(pred_tags)
+#         tp = len(gt_tags & pred_tags)
+#         fp = len(pred_tags - gt_tags)
+#         fn = len(gt_tags - pred_tags)
+#         return [tp, fp, fn]
+#     else:  # single-label
+#         gt_tags = gt_tags[0].name
+#         if suffix is not None and pred_tags[0].name.endswith(suffix):
+#             pred_tags = pred_tags[0].name[: -len(suffix)]
+#         else:
+#             pred_tags = pred_tags[0].name
+#         correct = gt_tags == pred_tags
+#         return [correct]

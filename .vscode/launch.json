@@ -7,8 +7,9 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
-            "justMyCode": true,
+            "justMyCode": false,
             "env": {
+                "PYTHONPATH": "${workspaceFolder}:${PYTHONPATH}",
                 "LOG_LEVEL": "DEBUG",
             }
         },
@@ -24,8 +25,7 @@
                 "--port",
                 "8000",
                 "--ws",
-                "websockets",
-                "--reload"
+                "websockets"
             ],
             "jinja": true,
             "justMyCode": false,
