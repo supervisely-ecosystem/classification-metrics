@@ -199,8 +199,8 @@ multilable_mode_desc = Container([multilable_mode_text, multilable_mode_switch])
 multilable_mode_switch_f = Field(
     multilable_mode_desc,
     "Count all combinations for misclassified tags",
-    "Turning it on, you may get more insights about which classes the model most often confuses, "
-    "but the values in the table will not actually mean the number of misclassified images, but rather misclassified tags.",
+    "Turn on to get more insights about classes the model most often confuses. "
+    "Note, if enabled, the values in the table will not represent the true number of incorrectly classified images. Instead, it will indicate the number of misclassified tags.",
 )
 metrics_tab_confusion_matrix = Container(
     [confusion_matrix_widget, multilable_mode_switch_f], gap=20
