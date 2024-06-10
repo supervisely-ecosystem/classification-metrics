@@ -1,10 +1,4 @@
 import supervisely as sly
-from dotenv import load_dotenv
-import os
-import pathlib
-import requests
-import time
-from itertools import chain
 import numpy as np
 import pandas as pd
 
@@ -51,7 +45,7 @@ def get_confusion_matrix(img2classes_gt: dict, img2classes_pred: dict, classes: 
         # We only have one class in a list for a single-label classification
         class_gt = classes_gt[0] if len(classes_gt) else "None"
         class_pred = classes_pred[0] if len(classes_pred) else "None"
-        confusion_matrix[class_gt][class_pred] += 1
+        confusion_matrix.loc[class_gt, class_pred] += 1
 
     return confusion_matrix
 
