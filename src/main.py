@@ -193,7 +193,7 @@ metrics_per_class_table = Table()
 metrics_per_class_table_f = Field(metrics_per_class_table, "Per-class metrics")
 multilable_mode_switch = Switch(switched=False)
 multilable_mode_text = Text(
-    "<i style='color:gray;'>(more details in <a href='https://ecosystem.supervise.ly/apps/classification-metrics#Confusion-Matrix-implementation-details-for-multi-label-task' target='_blank'>Readme</a>)</i>"
+    "<i style='color:gray;'>(more details in <a href='https://ecosystem.supervisely.com/apps/classification-metrics#Confusion-Matrix-implementation-details-for-multi-label-task' target='_blank'>Readme</a>)</i>"
 )
 multilable_mode_desc = Container([multilable_mode_text, multilable_mode_switch])
 multilable_mode_switch_f = Field(
