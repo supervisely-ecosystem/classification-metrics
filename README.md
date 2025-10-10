@@ -64,10 +64,10 @@ Consider an example: we have an image with GT classes ["dog", "cat"] and predict
 
 # Related apps
 
-1. [Train MMClassification](../../../../supervisely-ecosystem/mmclassification/supervisely/train) app to train classification model on your data 
+1. [Train MMClassification](../../../../../../supervisely-ecosystem/mmclassification/supervisely/train) app to train classification model on your data 
 <img data-key="sly-module-link" data-module-slug="supervisely-ecosystem/mmclassification/supervisely/train" src="https://i.imgur.com/mXG6njU.png" width="350px" style='padding-bottom: 10px'/>
 
-2. [Serve MMClassification](../../../../supervisely-ecosystem/mmclassification/supervisely/serve) app to load classification model to be applied to your project
+2. [Serve MMClassification](../../../../../../supervisely-ecosystem/mmclassification/supervisely/serve) app to load classification model to be applied to your project
 <img data-key="sly-module-link" data-module-slug="supervisely-ecosystem/mmclassification/supervisely/serve" src="https://i.imgur.com/CU8XHdQ.png" width="350px" style='padding-bottom: 10px'/>
 
 3. [Apply Classifier to Images Project](../../../../supervisely-ecosystem/apply-classification-model-to-project) app to apply classification model to your project
