@@ -12,7 +12,7 @@
   <a href="#Screenshot">Screenshot</a>
 </p>
 
-[![](https://img.shields.io/badge/supervisely-ecosystem-brightgreen)](../../../../supervisely-ecosystem/classification-metrics)
+[![](https://img.shields.io/badge/supervisely-ecosystem-brightgreen)](https://ecosystem.supervisely.com/apps/supervisely-ecosystem/classification-metrics)
 [![](https://img.shields.io/badge/slack-chat-green.svg?logo=slack)](https://supervisely.com/slack)
 ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/supervisely-ecosystem/classification-metrics)
 [![views](https://app.supervisely.com/img/badges/views/supervisely-ecosystem/classification-metrics.png)](https://supervisely.com)
@@ -35,7 +35,7 @@ Application key points:
 0. Be sure that you have two projects with the same dataset names and image names to compare. Unmatched datasets and image names will not be included to metrics calculation. Also be sure that images contain labels - image tags. One label should be on images from target project for single-label classification task and more than one for multi-label task. Images without tags in ground truth project will not be included to metrics calculation.
 1. Launch the app. Select two projects labeled by image tags at first step: with ground truth labels and with model predictions.
 2. The app matches images in both projects (step 2) and produces detailed report about matched pairs, allowing to validate the data.
-3. Then you can match classes and select that will be used in metrics calculation at step 3. If your tags from prediction project have a suffix (e.g. "_nn") that was auto-generated after the [Apply Classifier App](../../../../supervisely-ecosystem/apply-classification-model-to-project), you should make sure that they are matched too. If something went wrong and some tags weren't matched, adjust the suffix field and try again.
+3. Then you can match classes and select that will be used in metrics calculation at step 3. If your tags from prediction project have a suffix (e.g. "_nn") that was auto-generated after the [Apply Classifier App](https://ecosystem.supervisely.com/apps/apply-classification-model-to-project), you should make sure that they are matched too. If something went wrong and some tags weren't matched, adjust the suffix field and try again.
 4. Click "Calculate" and explore the confusion matrix below (step 4). Click on the cells to see the per image stats for any interesting cases, where the model gets right or wrong. You can display images with target and predicted tags by click on rows of per images stats table.
 5. Check the tabs "Overall" and "Per class" to see the metrics like precision, recall, f1-score and others.
 
@@ -70,7 +70,7 @@ Consider an example: we have an image with GT classes ["dog", "cat"] and predict
 2. [Serve MMClassification](https://ecosystem.supervisely.com/apps/supervisely-ecosystem/mmclassification/supervisely/serve) app to load classification model to be applied to your project
 <img data-key="sly-module-link" data-module-slug="supervisely-ecosystem/mmclassification/supervisely/serve" src="https://i.imgur.com/CU8XHdQ.png" width="350px" style='padding-bottom: 10px'/>
 
-3. [Apply Classifier to Images Project](../../../../supervisely-ecosystem/apply-classification-model-to-project) app to apply classification model to your project
+3. [Apply Classifier to Images Project](https://ecosystem.supervisely.com/apps/supervisely-ecosystem/apply-classification-model-to-project) app to apply classification model to your project
 <img data-key="sly-module-link" data-module-slug="supervisely-ecosystem/apply-classification-model-to-project" src="https://github.com/supervisely-ecosystem/apply-classification-model-to-project/releases/download/v0.0.1/app-name-descrition.png" width="350px" style='padding-bottom: 10px'/>
 
 # Screenshot
